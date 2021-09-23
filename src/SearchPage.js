@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import request from 'superagent'
 
+import PokeList from './PokeList.js'
+
 export default class SearchPage extends Component {
     state = {
         pokemon: [],
@@ -8,17 +10,17 @@ export default class SearchPage extends Component {
 
     componentDidMount = async () => {
         const response = await request.get ('https://pokedex-alchemy.herokuapp.com/api/pokedex?page=1&perPage=150&sort=id&direction=asc')
-        console.log (response.body.results)
-        this.setState({pokemon:response.body})
+        this.setState({pokemon:response.body.results})
         console.log(this.state)
+        console.log(this.state.pokemon)
+
+
     }
     
-    render() {
-        
+    render() {        
         return (
-            <div>
-                
-                gobbledy gook
+            <div>                
+                <PokeList />
             </div>
         )
     }
