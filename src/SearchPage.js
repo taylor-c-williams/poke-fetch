@@ -1,26 +1,30 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-
 import PokeList from './PokeList.js'
+
 
 export default class SearchPage extends Component {
     state = {
-        pokemon: [],
+        pokedex: [],
     }
 
     componentDidMount = async () => {
         const response = await request.get ('https://pokedex-alchemy.herokuapp.com/api/pokedex?page=1&perPage=150&sort=id&direction=asc')
-        this.setState({pokemon:response.body.results})
-        console.log(this.state)
-        console.log(this.state.pokemon)
-
-
+        this.setState({pokedex:response.body.results})
     }
     
-    render() {        
+    render() { 
+        console.log(this.state)    
         return (
             <div>                
-                <PokeList />
+
+                {/* {
+                this.state.pokedex.length === 0
+                ? <h1>Loading</h1>
+                :this.state.pokedex.map (pokedex => <PokeList pokedex = {this.state.pokedex}
+                    /> ) }       */}
+
+              <PokeList pokedex = {this.state.pokedex} />
             </div>
         )
     }
