@@ -14,13 +14,13 @@ export default class SearchPage extends Component {
     }
 
     componentDidMount = async () => {
-        this.fetch()
+        this.Pokefetch()
         }
 
-    fetch = async () => {
+    Pokefetch = async () => {
         this.setState ({ isLoading : true })
 
-        const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=id&direction=${this.state.sortOrder}`)
+        const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}&sort=id&direction=${this.state.sortOrder}`)
 
         this.setState ({
         pokedex: response.body.results,
@@ -29,27 +29,30 @@ export default class SearchPage extends Component {
     }
 
     handleInput = (e) => {
-        this.setState({query: e.target.value});
+        this.setState ({query: e.target.value});
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();        
-        this.fetch();
+        this.Pokefetch();
     }
 
     handleReset = async (e) => {
-        this.setState ({ query: '' })
-        this.fetch()
+        this.setState ({ 
+            query: '',
+            sortOrder: 'asc',
+            type: '' })
+        this.Pokefetch()
     }
 
     handleSortOrder = async (e) => {
         this.setState ({ sortOrder: e.target.value})
-        this.fetch()
+        this.Pokefetch()
     }
 
     handleType = async (e) => {
         this.setState ({ type: e.target.value})
-        this.fetch()
+        this.Pokefetch()
     }
 
 
@@ -77,7 +80,7 @@ export default class SearchPage extends Component {
                         Sort By:
                         <select onChange = {this.handleSortOrder}>
                          <option value =  "asc" > Ascending </option>
-                            <option value =  "desc" > Descending </option>
+                         <option value =  "desc" > Descending </option>
                         </select>
 
                        {/* Type Dropdown */}
