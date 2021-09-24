@@ -5,7 +5,7 @@ export default class PokeList extends Component {
     render(){
 
         return (
-            <div>
+            <div className = "listPage">
                 {
                     this.props.pokedex.map( pokemon => <PokeItem {...pokemon}
                     key = {pokemon.id} />)
