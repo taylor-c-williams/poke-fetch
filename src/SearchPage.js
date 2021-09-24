@@ -70,9 +70,8 @@ export default class SearchPage extends Component {
                         </form> 
 
                         {/* Reset Button */}
-                        <form onSubmit={this.handleReset}>
-                        <button>Reset!</button>
-                        </form>
+                        <button onClick={this.handleReset}>Reset!</button>
+
 
                         {/* Sort Order Dropdown */}
                         Sort By:
