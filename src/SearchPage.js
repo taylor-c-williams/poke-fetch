@@ -17,7 +17,7 @@ export default class SearchPage extends Component {
 
     fetch = async () => {
         this.setState ({ isLoading : true })
-        const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?page=1&perPage=150&sort=id&direction=${this.state.sortOrder}&pokemon=${this.state.query}`)
+        const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?page=1&perPage=801&sort=id&direction=${this.state.sortOrder}&pokemon=${this.state.query}`)
         this.setState ({
         pokedex: response.body.results,
         isLoading: false
@@ -38,19 +38,36 @@ export default class SearchPage extends Component {
         this.fetch()
     }
 
+    handleSortOrder = async (e) => {
+        this.setState ({ sortOrder: e.target.value})
+        this.fetch()
+    }
+
     
     render() { 
         console.log(this.state)    
         return (
             <div> 
+
+                {/* Search Input */}
                 <form onSubmit={this.handleSubmit}>
                 <input onChange={this.handleInput} />
                 <button>Search!</button>
                 </form> 
 
+                {/* Reset Button */}
                 <form onSubmit={this.handleReset}>
                 <button>Reset!</button>
                 </form> 
+
+                {/* Sort Order Dropdown */}
+                <select onChange = {this.handleSortOrder}>
+                    <option value =  "asc" > Ascending </option>
+                    <option value =  "desc" > Descending </option>
+                </select>              
+                
+
+
 
                 {
                 this.state.isLoading
