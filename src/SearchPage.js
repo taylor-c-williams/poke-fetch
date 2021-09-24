@@ -24,7 +24,7 @@ export default class SearchPage extends Component {
         })
     }
 
-    handleChange = (e) => {
+    handleInput = (e) => {
         this.setState({query: e.target.value});
     }
 
@@ -33,14 +33,23 @@ export default class SearchPage extends Component {
         this.fetch();
     }
 
+    handleReset = async (e) => {
+        this.setState ({ query: '' })
+        this.fetch()
+    }
+
     
     render() { 
         console.log(this.state)    
         return (
             <div> 
                 <form onSubmit={this.handleSubmit}>
-                <input onChange={this.handleChange} />
+                <input onChange={this.handleInput} />
                 <button>Search!</button>
+                </form> 
+
+                <form onSubmit={this.handleReset}>
+                <button>Reset!</button>
                 </form> 
 
                 {
