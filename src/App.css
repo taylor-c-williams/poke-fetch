@@ -61,14 +61,20 @@ h1 {
   font-family: 'VT323', monospace;
   letter-spacing: .25em;
   line-height: 1.5em;
+}
 
+h2 {
+  text-transform: capitalize;
+  font-family: 'VT323', monospace;
+  letter-spacing: .25em;
+  line-height: 1.5em;
+  background-color: white;
+  border-radius: 10px;
+  border:1px dotted;
 }
 
 ul {
   list-style-type:none;
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
 }
 
 li {
