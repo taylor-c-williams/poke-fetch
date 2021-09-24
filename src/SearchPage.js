@@ -58,8 +58,10 @@ export default class SearchPage extends Component {
         console.log(this.state)    
         return (
             <div className = "searchPage"> 
-                <h1>Taylor's Big Ol' Dang Pokemon Emporium!</h1>
-                Search for your favorites or browse by type!
+                <div className="header">
+                    <h1>Taylor's Big Ol' Dang Pokemon Emporium!</h1>
+                    Search for your favorites or browse by type!
+                
 
                 <section className = "inputs">
                     {/* Search Input */}
@@ -104,7 +106,7 @@ export default class SearchPage extends Component {
                     </select>
 
                 </section>
-
+            </div>
                 {/* Preloader */}
                 {
                 this.state.isLoading
