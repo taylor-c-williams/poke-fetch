@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import './App.css'
 import PokeList from './PokeList.js'
+import Dropdown from './Dropdown'
 
 
 export default class SearchPage extends Component {
@@ -38,7 +39,7 @@ export default class SearchPage extends Component {
     }
 
     handleReset = async (e) => {
-        this.setState ({ 
+         this.setState ({ 
             query: '',
             sortOrder: 'asc',
             type: '' })
@@ -78,10 +79,17 @@ export default class SearchPage extends Component {
 
                         {/* Sort Order Dropdown */}
                         Sort By:
-                        <select onChange = {this.handleSortOrder}>
+
+                        <Dropdown options = {[{
+                            value: 'asc', display: 'Ascending'
+                            },{
+                            value: 'desc', display: 'Descending'
+                            }]} />
+
+                        {/* <select onChange = {this.handleSortOrder}>
                          <option value =  "asc" > Ascending </option>
                          <option value =  "desc" > Descending </option>
-                        </select>
+                        </select> */}
 
                        {/* Type Dropdown */}
                        Type:
