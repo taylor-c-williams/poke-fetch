@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
+
 .App {
   text-align: center;
 }
@@ -35,4 +38,75 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body { 
+  font-size:1.25em;
+  font-family: 'Yomogi', cursive;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left:200px;
+  margin-right:200px;
+}
+
+
+h1 {
+  text-transform: capitalize;
+  font-family: 'VT323', monospace;
+
+}
+
+ul {
+  list-style-type:none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  display:grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding-right:20px;
+  line-height: 1.5em;
+}
+
+.listPage {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  grid-gap:20px;
+  font-family: 'VT323', monospace;
+
+}
+
+.listPage img{
+  height:300px;
+}
+
+.pokemonCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dotted;
+}
+
+button, select, input { 
+  margin:15px;
+  border: 1px dotted;  
+  font-family: 'Yomogi', cursive;
+  font-size:.85em;
+  background-color: white;
+}
+
+.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin:50px;
 }
