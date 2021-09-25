@@ -3,8 +3,8 @@ import request from 'superagent'
 import './App.css'
 import PokeList from './PokeList.js'
 
-
 export default class SearchPage extends Component {
+
     state = {
         pokedex: [],
         sortOrder: 'asc',
@@ -14,94 +14,108 @@ export default class SearchPage extends Component {
     }
 
     componentDidMount = async () => {
-        this.fetch()
+       await  this.Pokefetch()
         }
 
-    fetch = async () => {
-        this.setState ({ isLoading : true })
+    Pokefetch = async () => {
+        await this.setState ({ isLoading : true })
 
-        const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?sort=id&direction=${this.state.sortOrder}`)
+        const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}&sort=id&direction=${this.state.sortOrder}&type_1=${this.state.type}`)
+
+        // const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${this.state.searchCategory}=${this.state.query}&sort=${this.state.sortCategory}&direction=${this.state.sortOrder}`);
+
 
         this.setState ({
         pokedex: response.body.results,
         isLoading: false
         })
+
+        const params = URLSearchParams.toString()
+        console.log(params)
     }
 
     handleInput = (e) => {
-        this.setState({query: e.target.value});
+        this.setState ({query: e.target.value});
     }
 
     handleSubmit = async (e) => {
         e.preventDefault();        
-        this.fetch();
+        await this.Pokefetch();
     }
 
     handleReset = async (e) => {
-        this.setState ({ query: '' })
-        this.fetch()
+         this.setState ({ 
+            query: '',
+            sortOrder: 'asc',
+            type: '' })
+        await this.Pokefetch()
     }
 
     handleSortOrder = async (e) => {
         this.setState ({ sortOrder: e.target.value})
-        this.fetch()
+        await this.Pokefetch()
     }
 
     handleType = async (e) => {
         this.setState ({ type: e.target.value})
-        this.fetch()
+        await this.Pokefetch()
     }
-
-
     
     render() { 
         console.log(this.state)    
         return (
             <div className = "searchPage"> 
                 <div className="header">
-                    <h1>Taylor's Big Ol' Dang Pokemon Emporium!</h1>
-                    Search for your favorites or browse by type!                
+                    <h1>Taylor's Big Ol' Dang Pokemon Emporium Yee Ha!</h1>
+                                  
 
-                    <section className = "inputs">
-                        {/* Search Input */}
+                    <section className = "searchInput">
+                    Search for your favorites or browse by type!  
+
+                        {/* Search Input and Reset */}
                         <form onSubmit={this.handleSubmit}>
-                        <input onChange={this.handleInput} />
-                        <button>Search!</button>
+                        <input className = "searchInput" onChange={this.handleInput} />
+                        <button className = "submitButton">Search!</button>
+                        <button className = "resetButton" onClick={this.handleReset}>Reset!</button>
                         </form> 
+                    </section>
 
-                        {/* Reset Button */}
-                        <form onSubmit={this.handleReset}>
-                        <button>Reset!</button>
-                        </form>
+                    <section className = "dropdowns">
+                        {/* Sort Order Drpdown */}
+                        Sort By Pokedex ID:
 
-                        {/* Sort Order Dropdown */}
-                        Sort By:
-                        <select onChange = {this.handleSortOrder}>
-                         <option value =  "asc" > Ascending </option>
-                            <option value =  "desc" > Descending </option>
+                        {/* <Dropdown options = {[{
+                            value: 'asc', display: 'Ascending'
+                            },{
+                            value: 'desc', display: 'Descending'
+                            }]} /> */}
+
+                        <select onChange = {this.handleSortOrder} className = "dropdown">
+                         <option value =  "asc" >Ascending</option>
+                         <option value =  "desc" >Descending</option>
                         </select>
 
                        {/* Type Dropdown */}
                        Type:
-                        <select onChange = {this.handleType}>
+                        <select onChange = {this.handleType} className = "dropdown">
                             <option value =  "" > All </option>
-                            <option value =  "&type_1=normal" > Normal </option>
-                            <option value =  "&type_1=fire" > Fire </option>
-                            <option value =  "&type_1=water" > Water </option>
-                            <option value =  "&type_1=grass" > Grass </option>
-                            <option value =  "&type_1=electric" > Electric </option>
-                            <option value =  "&type_1=ice" > Ice </option>
-                            <option value =  "&type_1=fighting" > Fighting </option>
-                            <option value =  "&type_1=poison" > Poison </option>
-                            <option value =  "&type_1=ground" > Ground </option>
-                            <option value =  "&type_1=flying" > Flying </option>
-                            <option value =  "&type_1=psychic" > Psychic </option>
-                            <option value =  "&type_1=bug" > Bug </option>
-                            <option value =  "&type_1=rock" > Rock </option>
-                            <option value =  "&type_1=ghost" > Ghost </option>
-                            <option value =  "&type_1=dragon" > Dragon </option>
-                            <option value =  "&type_1=steel" > Steel </option>
-                            <option value =  "&type_1=fairy" > Fairy </option>
+                            <option value =  "normal" > Normal </option>
+                            <option value =  "fire" > Fire </option>
+                            <option value =  "water" > Water </option>
+                            <option value =  "grass" > Grass </option>
+                            <option value =  "electric" > Electric </option>
+                            <option value =  "ice" > Ice </option>
+                            <option value =  "fighting" > Fighting </option>
+                            <option value =  "poison" > Poison </option>
+                            <option value =  "ground" > Ground </option>
+                            <option value =  "flying" > Flying </option>
+                            <option value =  "psychic" > Psychic </option>
+                            <option value =  "bug" > Bug </option>
+                            <option value =  "rock" > Rock </option>
+                            <option value =  "ghost" > Ghost </option>
+                            <option value =  "dragon" > Dragon </option>
+                            <option value =  "steel" > Steel </option>
+                            <option value =  "fairy" > Fairy </option>
                         </select>
                     </section>
                 </div>
