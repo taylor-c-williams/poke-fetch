@@ -3,7 +3,6 @@ import request from 'superagent'
 import './App.css'
 import PokeList from './PokeList.js'
 
-
 export default class SearchPage extends Component {
 
     state = {
@@ -68,9 +67,10 @@ export default class SearchPage extends Component {
             <div className = "searchPage"> 
                 <div className="header">
                     <h1>Taylor's Big Ol' Dang Pokemon Emporium Yee Ha!</h1>
-                    Search for your favorites or browse by type!                
+                                  
 
-                    <section className = "inputs">
+                    <section className = "searchInput">
+                    Search for your favorites or browse by type!  
 
                         {/* Search Input and Reset */}
                         <form onSubmit={this.handleSubmit}>
@@ -78,7 +78,9 @@ export default class SearchPage extends Component {
                         <button className = "submitButton">Search!</button>
                         <button className = "resetButton" onClick={this.handleReset}>Reset!</button>
                         </form> 
+                    </section>
 
+                    <section className = "dropdowns">
                         {/* Sort Order Drpdown */}
                         Sort By Pokedex ID:
 
@@ -88,14 +90,14 @@ export default class SearchPage extends Component {
                             value: 'desc', display: 'Descending'
                             }]} /> */}
 
-                        <select onChange = {this.handleSortOrder}>
+                        <select onChange = {this.handleSortOrder} className = "dropdown">
                          <option value =  "asc" >Ascending</option>
                          <option value =  "desc" >Descending</option>
                         </select>
 
                        {/* Type Dropdown */}
                        Type:
-                        <select onChange = {this.handleType}>
+                        <select onChange = {this.handleType} className = "dropdown">
                             <option value =  "" > All </option>
                             <option value =  "normal" > Normal </option>
                             <option value =  "fire" > Fire </option>

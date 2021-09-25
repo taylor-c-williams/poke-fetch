@@ -1,6 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Grandstander&display=swap');
 
 * {
   box-sizing: border-box;
@@ -47,27 +46,43 @@
 
 body { 
   font-size:1.25em;
-  font-family: 'Yomogi', cursive;
+  font-family: 'Space Mono', monospace;
   margin-left:15%;
   margin-right:15%;
-  background-image:url('./8614.jpg');
+  background:url('./background.png') fixed no-repeat;
+  background-size:100%;
+  background-color: #7DAD71;
 }
 
 .header{
   background-color: white;
   border-radius: 40px;
   box-shadow: -5px 5px 0px 1px #848484;
+  font-size: .75em;
+}
+
+.header h1 {
+  font-size:2em;
+  padding:15px;
 }
 
 
 button, select, input { 
   border: 1px dotted; 
   border-radius: 10px;;
-  font-family: 'DotGothic16', sans-serif;
+  font-family: 'Space Mono', monospace;
   letter-spacing: .15em;
   font-size:.85em;
   background-color: white;
-  margin:10px;
+  margin: 10px;
+  cursor: pointer;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
 }
 
 select {
@@ -77,24 +92,38 @@ select {
 }
 
 button {
-  font-family: 'DotGothic16', sans-serif;
+  font-family: 'Space Mono', monospace;
 	background-color: white;
 	border: 1px dotted black;
   border-radius: 10px;;
 	font-size: .75em;
 	cursor: pointer;
 	box-shadow: -5px 5px 0px 1px #848484;
-	position: relative;
-  top: -2px;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
 }
 
 button:hover {
-	background-color: silver;
+	background-color: #7DAD71;
 	color: white;
+  -webkit-animation-name: hvr-hang-sink, hvr-hang;
+  animation-name: hvr-hang-sink, hvr-hang;
+  -webkit-animation-duration: .3s, 1.5s;
+  animation-duration: .3s, 1.5s;
+  -webkit-animation-delay: 0s, .3s;
+  animation-delay: 0s, .3s;
+  -webkit-animation-timing-function: ease-out, ease-in-out;
+  animation-timing-function: ease-out, ease-in-out;
+  -webkit-animation-iteration-count: 1, infinite;
+  animation-iteration-count: 1, infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-direction: normal, alternate;
+  animation-direction: normal, alternate;
 }
 
 button:active {
-  font-family: 'DotGothic16', sans-serif;
+  font-family: 'Space Mono', monospace;
 	background-color: #4a4140;
 	color: white;
 	border: 1px dotted black;
@@ -103,24 +132,28 @@ button:active {
 	box-shadow: 5px 5px 0px 1px #848484;
 }
 
-.inputs {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 80px;
+.searchInput {
+  display: inline;
+}
+
+.dropdowns {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-bottom: 40px;
+padding: 15px;
 }
 
 h1 {
   text-transform: capitalize;
-  font-family: 'DotGothic16', sans-serif;
+  font-family: 'Grandstander', monospace;
   letter-spacing: .25em;
   line-height: 1.5em;
 }
 
 h2 {
   text-transform: capitalize;
-  font-family: 'VT323', monospace;
+  font-family: 'Space Mono', monospace;
   letter-spacing: .25em;
   line-height: 1.5em;
   background-color: white;
@@ -152,7 +185,7 @@ li {
   justify-content: center;
   align-items: center;
   grid-gap:20px;
-  font-family: 'DotGothic16', sans-serif;
+  font-family: 'Space Mono', monospace;
   font-size: .75em;
 
 }
@@ -172,4 +205,45 @@ li {
   justify-content: center;
   align-items: center;
   background-color: white;
+}
+
+@-webkit-keyframes hvr-hang {
+  0% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+  50% {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+@keyframes hvr-hang {
+  0% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+  50% {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+  }
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+@-webkit-keyframes hvr-hang-sink {
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
+}
+@keyframes hvr-hang-sink {
+  100% {
+    -webkit-transform: translateY(8px);
+    transform: translateY(8px);
+  }
 }
