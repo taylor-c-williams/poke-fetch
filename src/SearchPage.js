@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import request from 'superagent'
 import './App.css'
 import PokeList from './PokeList.js'
-import Dropdown from './Dropdown'
 
 
 export default class SearchPage extends Component {
+
     state = {
         pokedex: [],
         sortOrder: 'asc',
@@ -15,18 +15,24 @@ export default class SearchPage extends Component {
     }
 
     componentDidMount = async () => {
-        this.Pokefetch()
+       await  this.Pokefetch()
         }
 
     Pokefetch = async () => {
-        this.setState ({ isLoading : true })
+        await this.setState ({ isLoading : true })
 
-        const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}&sort=id&direction=${this.state.sortOrder}`)
+        const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}&sort=id&direction=${this.state.sortOrder}&type_1=${this.state.type}`)
+
+        // const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${this.state.searchCategory}=${this.state.query}&sort=${this.state.sortCategory}&direction=${this.state.sortOrder}`);
+
 
         this.setState ({
         pokedex: response.body.results,
         isLoading: false
         })
+
+        const params = URLSearchParams.toString()
+        console.log(params)
     }
 
     handleInput = (e) => {
@@ -35,7 +41,7 @@ export default class SearchPage extends Component {
 
     handleSubmit = async (e) => {
         e.preventDefault();        
-        this.Pokefetch();
+        await this.Pokefetch();
     }
 
     handleReset = async (e) => {
@@ -43,17 +49,17 @@ export default class SearchPage extends Component {
             query: '',
             sortOrder: 'asc',
             type: '' })
-        this.Pokefetch()
+        await this.Pokefetch()
     }
 
     handleSortOrder = async (e) => {
         this.setState ({ sortOrder: e.target.value})
-        this.Pokefetch()
+        await this.Pokefetch()
     }
 
     handleType = async (e) => {
         this.setState ({ type: e.target.value})
-        this.Pokefetch()
+        await this.Pokefetch()
     }
     
     render() { 
@@ -91,23 +97,23 @@ export default class SearchPage extends Component {
                        Type:
                         <select onChange = {this.handleType}>
                             <option value =  "" > All </option>
-                            <option value =  "&type_1=normal" > Normal </option>
-                            <option value =  "&type_1=fire" > Fire </option>
-                            <option value =  "&type_1=water" > Water </option>
-                            <option value =  "&type_1=grass" > Grass </option>
-                            <option value =  "&type_1=electric" > Electric </option>
-                            <option value =  "&type_1=ice" > Ice </option>
-                            <option value =  "&type_1=fighting" > Fighting </option>
-                            <option value =  "&type_1=poison" > Poison </option>
-                            <option value =  "&type_1=ground" > Ground </option>
-                            <option value =  "&type_1=flying" > Flying </option>
-                            <option value =  "&type_1=psychic" > Psychic </option>
-                            <option value =  "&type_1=bug" > Bug </option>
-                            <option value =  "&type_1=rock" > Rock </option>
-                            <option value =  "&type_1=ghost" > Ghost </option>
-                            <option value =  "&type_1=dragon" > Dragon </option>
-                            <option value =  "&type_1=steel" > Steel </option>
-                            <option value =  "&type_1=fairy" > Fairy </option>
+                            <option value =  "normal" > Normal </option>
+                            <option value =  "fire" > Fire </option>
+                            <option value =  "water" > Water </option>
+                            <option value =  "grass" > Grass </option>
+                            <option value =  "electric" > Electric </option>
+                            <option value =  "ice" > Ice </option>
+                            <option value =  "fighting" > Fighting </option>
+                            <option value =  "poison" > Poison </option>
+                            <option value =  "ground" > Ground </option>
+                            <option value =  "flying" > Flying </option>
+                            <option value =  "psychic" > Psychic </option>
+                            <option value =  "bug" > Bug </option>
+                            <option value =  "rock" > Rock </option>
+                            <option value =  "ghost" > Ghost </option>
+                            <option value =  "dragon" > Dragon </option>
+                            <option value =  "steel" > Steel </option>
+                            <option value =  "fairy" > Fairy </option>
                         </select>
                     </section>
                 </div>
