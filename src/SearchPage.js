@@ -67,7 +67,7 @@ export default class SearchPage extends Component {
         return (
             <div className = "searchPage"> 
                 <div className="header">
-                    <h1>Taylor's Big Ol' Dang Pokemon Emporium!</h1>
+                    <h1>Taylor's Big Ol' Dang Pokemon Emporium Yee Ha!</h1>
                     Search for your favorites or browse by type!                
 
                     <section className = "inputs">
@@ -80,7 +80,7 @@ export default class SearchPage extends Component {
                         </form> 
 
                         {/* Sort Order Drpdown */}
-                        Sort By:
+                        Sort By Pokedex ID:
 
                         {/* <Dropdown options = {[{
                             value: 'asc', display: 'Ascending'
@@ -89,8 +89,8 @@ export default class SearchPage extends Component {
                             }]} /> */}
 
                         <select onChange = {this.handleSortOrder}>
-                         <option value =  "asc" > Ascending </option>
-                         <option value =  "desc" > Descending </option>
+                         <option value =  "asc" >Ascending</option>
+                         <option value =  "desc" >Descending</option>
                         </select>
 
                        {/* Type Dropdown */}
