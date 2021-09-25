@@ -56,6 +56,53 @@ body {
 }
 
 
+button, select, input { 
+  border: 1px dotted; 
+  border-radius: 10px;;
+  font-family: 'DotGothic16', sans-serif;
+  letter-spacing: .15em;
+  font-size:.85em;
+  background-color: white;
+}
+
+button {
+  font-family: 'DotGothic16', sans-serif;
+	background-color: white;
+	border: 1px dotted black;
+  border-radius: 10px;;
+	font-size: .75em;
+	cursor: pointer;
+	box-shadow: -5px 5px 0px 1px #848484;
+	position: relative;
+}
+
+button:hover {
+	background-color: silver;
+	color: white;
+}
+
+button:active {
+  font-family: 'VT323', monospace;
+	background-color: #4a4140;
+	color: white;
+	border: 1px dotted black;
+	font-size: 1em;
+	cursor: pointer;
+	box-shadow: 5px 5px 0px 1px #848484;
+}
+
+.inputs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin:50px;
+}
+
+form{
+  display: grid;
+}
+
 h1 {
   text-transform: capitalize;
   font-family: 'VT323', monospace;
@@ -117,49 +164,4 @@ li {
   justify-content: center;
   align-items: center;
   background-color: white;
-}
-
-button, select, input { 
-  margin:15px;
-  border: 1px dotted; 
-  border-radius: 10px;;
-  font-family: 'DotGothic16', sans-serif;
-  letter-spacing: .15em;
-  font-size:.85em;
-  background-color: white;
-}
-
-button {
-  font-family: 'DotGothic16', sans-serif;
-	background-color: white;
-	border: 1px dotted black;
-  border-radius: 10px;;
-	font-size: .75em;
-	cursor: pointer;
-	box-shadow: -5px 5px 0px 1px #848484;
-	position: relative;
-  margin:20px;
-}
-
-button:hover {
-	background-color: silver;
-	color: white;
-}
-
-button:active {
-  font-family: 'VT323', monospace;
-	background-color: #4a4140;
-	color: white;
-	border: 1px dotted black;
-	font-size: 1em;
-	cursor: pointer;
-	box-shadow: 5px 5px 0px 1px #848484;
-}
-
-.inputs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  margin:50px;
 }

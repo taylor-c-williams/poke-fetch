@@ -55,8 +55,6 @@ export default class SearchPage extends Component {
         this.setState ({ type: e.target.value})
         this.Pokefetch()
     }
-
-
     
     render() { 
         console.log(this.state)    
@@ -67,29 +65,27 @@ export default class SearchPage extends Component {
                     Search for your favorites or browse by type!                
 
                     <section className = "inputs">
-                        {/* Search Input */}
+
+                        {/* Search Input and Reset */}
                         <form onSubmit={this.handleSubmit}>
                         <input onChange={this.handleInput} />
                         <button>Search!</button>
-                        </form> 
-
-                        {/* Reset Button */}
                         <button onClick={this.handleReset}>Reset!</button>
-
+                        </form> 
 
                         {/* Sort Order Dropdown */}
                         Sort By:
 
-                        <Dropdown options = {[{
+                        {/* <Dropdown options = {[{
                             value: 'asc', display: 'Ascending'
                             },{
                             value: 'desc', display: 'Descending'
-                            }]} />
+                            }]} /> */}
 
-                        {/* <select onChange = {this.handleSortOrder}>
+                        <select onChange = {this.handleSortOrder}>
                          <option value =  "asc" > Ascending </option>
                          <option value =  "desc" > Descending </option>
-                        </select> */}
+                        </select>
 
                        {/* Type Dropdown */}
                        Type:
