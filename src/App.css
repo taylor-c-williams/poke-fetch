@@ -2,6 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
 }
@@ -101,6 +105,28 @@ button:active {
 
 form{
   display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+
+.searchInput {
+  grid-column-start: 1;
+  grid-row-start: 2;
+}
+
+.submitButton {
+  grid-column-start: 2;
+  grid-row-start:1;
+  grid-row-end:2;
+  margin:-10px;
+
+}
+
+.resetButton {
+  grid-column-start: 2;
+  grid-row-start:3;
+  margin:-10px;
+
 }
 
 h1 {

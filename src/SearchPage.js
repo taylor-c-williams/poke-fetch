@@ -68,12 +68,12 @@ export default class SearchPage extends Component {
 
                         {/* Search Input and Reset */}
                         <form onSubmit={this.handleSubmit}>
-                        <input onChange={this.handleInput} />
-                        <button>Search!</button>
-                        <button onClick={this.handleReset}>Reset!</button>
+                        <input className = "searchInput" onChange={this.handleInput} />
+                        <button className = "submitButton">Search!</button>
+                        <button className = "resetButton" onClick={this.handleReset}>Reset!</button>
                         </form> 
 
-                        {/* Sort Order Dropdown */}
+                        {/* Sort Order Drpdown */}
                         Sort By:
 
                         {/* <Dropdown options = {[{
