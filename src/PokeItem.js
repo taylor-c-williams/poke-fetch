@@ -17,7 +17,7 @@ export default class PokeItem extends Component {
               <ul>             
                 <li>
                   <section className = "statsHeader">
-                  <Link to = {`/pokemon/${this.props.pokemon}}`}> 
+                  <Link to = {`/pokemon/${this.props.pokemon}`}> 
                     <img src = {this.props.url_image} alt = {this.props.pokemon}/>
                     <h1>{this.props.pokemon}</h1>
                   </Link>
