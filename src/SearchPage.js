@@ -26,9 +26,6 @@ export default class SearchPage extends Component {
         pokedex: response.body.results,
         isLoading: false
         })
-
-        const params = URLSearchParams.toString()
-        console.log(params)
     }
 
     handleInput = (e) => {

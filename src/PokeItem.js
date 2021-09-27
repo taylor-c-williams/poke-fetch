@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import {
   BrowserRouter as Router,
   Link,
-  Switch,
-  Route,
-  NavLink
 } from 'react-router-dom';
 
 export default class PokeItem extends Component {
@@ -13,7 +10,7 @@ export default class PokeItem extends Component {
 
         return (
             <div className = "pokemonCard">
-              <Router>
+
               <ul>             
                 <li>
                   <section className = "statsHeader">
@@ -36,7 +33,7 @@ export default class PokeItem extends Component {
                    </span>
                 </li>
               </ul>
-              </Router>
+
             </div>
       
         )
