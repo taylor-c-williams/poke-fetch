@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import request from 'superagent'
-import './App.css'
 import PokeList from './PokeList.js'
+import './App.css'
 
 export default class SearchPage extends Component {
 
@@ -21,9 +21,6 @@ export default class SearchPage extends Component {
         await this.setState ({ isLoading : true })
 
         const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}&sort=id&direction=${this.state.sortOrder}&type_1=${this.state.type}`)
-
-        // const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?${this.state.searchCategory}=${this.state.query}&sort=${this.state.sortCategory}&direction=${this.state.sortOrder}`);
-
 
         this.setState ({
         pokedex: response.body.results,
@@ -123,7 +120,7 @@ export default class SearchPage extends Component {
                 {/* Preloader */}
                 {
                 this.state.isLoading
-                ?<h2> Loading ... </h2>
+                ?<section className = "loading"><h2> Loading ... </h2></section>
                 : <PokeList pokedex = {this.state.pokedex} />
                 }           
             </div>
