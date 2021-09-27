@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PokeItem from './PokeItem'
+import PokeList from './PokeList'
 import request from 'superagent'
 
 export default class DetailPage extends Component {
@@ -8,14 +8,14 @@ export default class DetailPage extends Component {
     }
 
     componentDidMount = async () => {
-    const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.props.match.params.characterName}}`)
+    const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.props.match.params.pokemonName}}`)
     this.setState({ pokemon: response.body})
 }
     render() {
         console.log(this.props.match.params.characterName)
         return (
             <div>
-                <h1>Welcome to ding dong header page for {this.props.match.params.characterName}</h1>
+                <h1>Welcome to ding dong header page for {this.props.match.params.pokemonName}</h1>
 
             {/* Preloader */}
             {
