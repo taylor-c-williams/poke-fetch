@@ -19,14 +19,14 @@ export default class App extends Component {
         <header>
           <NavLink
           exact
-          // activeStyle = {{ backgroundColor: 'grey'}}
+          activeStyle = {{ backgroundColor: 'grey'}}
           to ="/">
             Home
           </NavLink>
 
           <NavLink
           exact
-          // activeStyle = {{ backgroundColor: 'grey'}}
+          activeStyle = {{ backgroundColor: 'grey'}}
           to ="/SearchPage">
             Pokedex
           </NavLink>

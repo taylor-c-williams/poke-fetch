@@ -63,7 +63,7 @@ export default class SearchPage extends Component {
         return (
             <div className = "searchPage"> 
                 <div className="header">
-                    <h1>Taylor's Big Ol' Dang Pokemon Emporium Yee Ha!</h1>
+                    <h1>Taylor's Big Ol' Dang Pokemon Emporium Yee Haw!</h1>
                                   
 
                     <section className = "searchInput">

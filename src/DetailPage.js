@@ -4,7 +4,7 @@ import request from 'superagent'
 
 export default class DetailPage extends Component {
     state = {
-        pokemon: []
+        pokedex: []
     }
 
     componentDidMount = async () => {
@@ -12,7 +12,7 @@ export default class DetailPage extends Component {
     this.setState({ pokemon: response.body})
 }
     render() {
-        console.log(this.props.match.params.characterName)
+        console.log(this.props.match.params.pokemonName)
         return (
             <div>
                 <h1>Welcome to ding dong header page for {this.props.match.params.pokemonName}</h1>
