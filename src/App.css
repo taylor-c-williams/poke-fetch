@@ -54,6 +54,30 @@ body {
   background-color: #7DAD71;
 }
 
+a:link, a:active, a:visited {
+  text-decoration: none;
+  color: #7DAD71;
+}
+
+a:hover {
+  color: skyblue;
+  text-decoration: italic;
+}
+
+.nav {
+    border: 1px dotted;
+    border-radius: 40px;
+    box-shadow: -5px 5px 0px 1px #848484;
+    height:50px;
+    margin-bottom:30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: white;
+    margin-top:20px;
+    font-size:.8em;
+}
+
 .header{
   background-color: white;
   border-radius: 40px;
@@ -140,8 +164,37 @@ button:active {
 display: flex;
 justify-content: center;
 align-items: center;
-margin-bottom: 40px;
 padding: 15px;
+}
+
+.pagination {
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+  margin-bottom: 40px;
+  font-size: .75em;
+}
+
+.pagination span{
+  grid-column-start: 2;
+}
+
+.loading h2 {
+  -webkit-animation-name: hvr-hang-sink, hvr-hang;
+  animation-name: hvr-hang-sink, hvr-hang;
+  -webkit-animation-duration: .3s, 1.5s;
+  animation-duration: .3s, 1.5s;
+  -webkit-animation-delay: 0s, .3s;
+  animation-delay: 0s, .3s;
+  -webkit-animation-timing-function: ease-out, ease-in-out;
+  animation-timing-function: ease-out, ease-in-out;
+  -webkit-animation-iteration-count: 1, infinite;
+  animation-iteration-count: 1, infinite;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-direction: normal, alternate;
+  animation-direction: normal, alternate;
 }
 
 h1 {
@@ -199,7 +252,28 @@ li {
   border: 1px dotted;
   border-radius: 40px;
   box-shadow: -5px 5px 0px 1px #848484;
-  height:650px;
+  height:500px;
+  margin-bottom:30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.details {
+  margin:50px;
+  font-size: .8em;
+}
+
+.details img{
+  height:350px;
+}
+
+.detailsItem {
+  border: 1px dotted;
+  border-radius: 40px;
+  box-shadow: -5px 5px 0px 1px #848484;
+  height:750px;
   margin-bottom:30px;
   display: flex;
   justify-content: center;
