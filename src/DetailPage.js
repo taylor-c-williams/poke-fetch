@@ -21,7 +21,7 @@ export default class DetailPage extends Component {
         return (
             <div>
                 <h1>Welcome to ding dong header page for {this.props.match.params.pokemonName}</h1>
-      
+    
 
             {/* Preloader */}
             {
