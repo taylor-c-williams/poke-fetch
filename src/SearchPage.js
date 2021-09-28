@@ -5,6 +5,7 @@ import './App.css'
 
 export default class SearchPage extends Component {
 
+// Initialize State
     state = {
         pokedex: [],
         sortOrder: 'asc',
@@ -29,12 +30,15 @@ export default class SearchPage extends Component {
         })
     }
 
+
+// So Many, Many Handlers 
     handleInput = (e) => {
-        this.setState ({query: e.target.value});
+        this.setState ({query: e.target.value})
     }
 
     handleSubmit = async (e) => {
-        e.preventDefault();        
+        e.preventDefault();
+        this.setState ({ currentPage: 1})        
         await this.Pokefetch();
     }
 
@@ -66,19 +70,13 @@ export default class SearchPage extends Component {
         await this.Pokefetch()
     }
 
-    render() { 
-        console.log(this.state)    
+    render() {  
         return (
             <div className = "searchPage"> 
+
+            {/* Header */}
                 <div className="header">
                     <h1>Taylor's Big Ol' Dang Pokemon Emporium Yee Haw!</h1>
-
-                    {this.state.currentPage !== 1 && <button onClick = {this.handlePrevClick}>Previous Page</button>}
-
-                    <span>Current Page: {this.state.currentPage} of blank pages</span>
-
-                    {this.state.pokedex.length < 20 || <button onClick = {this.handleNextClick}>Next Page</button>} 
-
                     <section className = "searchInput">
                     Search for your favorites or browse by type!  
 
@@ -93,12 +91,6 @@ export default class SearchPage extends Component {
                     <section className = "dropdowns">
                         {/* Sort Order Drpdown */}
                         Sort By Pokedex ID:
-
-                        {/* <Dropdown options = {[{
-                            value: 'asc', display: 'Ascending'
-                            },{
-                            value: 'desc', display: 'Descending'
-                            }]} /> */}
 
                         <select onChange = {this.handleSortOrder} className = "dropdown">
                          <option value =  "asc" >Ascending</option>
@@ -128,6 +120,15 @@ export default class SearchPage extends Component {
                             <option value =  "fairy" > Fairy </option>
                         </select>
                     </section>
+
+                    {/* Pagination */}
+                    <section className = "pagination">
+                    {this.state.currentPage !== 1 && <button onClick = {this.handlePrevClick}>Previous Page</button>}
+
+                    <span>Current Page: <strong>{this.state.currentPage}</strong> of <strong>41</strong></span>
+
+                    {this.state.pokedex.length < 20 || <button onClick = {this.handleNextClick}>Next Page</button>} 
+                </section>
                 </div>
 
                 {/* Preloader */}
@@ -136,6 +137,7 @@ export default class SearchPage extends Component {
                 ?<section className = "loading"><h2> Loading ... </h2></section>
                 : <PokeList pokedex = {this.state.pokedex} />
                 }           
+                
             </div>
         )
     }

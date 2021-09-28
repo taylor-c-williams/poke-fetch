@@ -1,6 +1,5 @@
 import './App.css';
 import React, { Component } from 'react'
-// import request from 'superagent'
 import SearchPage from './SearchPage'
 import DetailPage from './DetailPage'
 import HomePage from './HomePage'
@@ -11,25 +10,26 @@ import {
   NavLink
 } from 'react-router-dom';
 
+
 export default class App extends Component {
   
   render(){
   return (
     <div className="App">
       <Router>
-        <header>
+        <header className = "nav">
           <NavLink
           exact
-          activeStyle = {{ backgroundColor: 'grey'}}
+          activeStyle = {{fontWeight: 'bold' }}
           to ="/">
-            Home
+          ◦  Home ◦
           </NavLink>
 
           <NavLink
           exact
-          activeStyle = {{ backgroundColor: 'grey'}}
+          activeStyle = {{ fontWeight: 'bold'}}
           to ="/SearchPage">
-            Pokedex
+         ◦ Pokedex ◦ 
           </NavLink>
         </header>
 
@@ -48,7 +48,6 @@ export default class App extends Component {
           path = "/pokemon/:pokemonName"
           exact
           render = {(routerProps) => <DetailPage {...routerProps}/>}/>
-          
         </Switch>
       </Router>
     </div>
