@@ -4,13 +4,17 @@ import request from 'superagent'
 
 export default class DetailPage extends Component {
     state = {
-        pokedex: []
+        pokedex: [],
+        isLoading:false,
     }
 
     componentDidMount = async () => {
+    await this.setState ({ isLoading : true })
     const response = await request.get(`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.props.match.params.pokemonName}`)
-    this.setState({ pokedex: response.body.results})
-    console.log(this.state)
+    this.setState({ 
+        pokedex: response.body.results,
+        isLoading:false
+    })
 }
 
     render() {
