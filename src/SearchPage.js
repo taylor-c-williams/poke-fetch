@@ -11,6 +11,7 @@ export default class SearchPage extends Component {
         query:'',
         isLoading: false,
         type: '',
+        currentPage: 1,
     }
 
     componentDidMount = async () => {
@@ -20,7 +21,7 @@ export default class SearchPage extends Component {
     Pokefetch = async () => {
         await this.setState ({ isLoading : true })
 
-        const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?pokemon=${this.state.query}&sort=id&direction=${this.state.sortOrder}&type_1=${this.state.type}`)
+        const response = await request.get (`https://pokedex-alchemy.herokuapp.com/api/pokedex?page=${this.state.currentPage}&pokemon=${this.state.query}&sort=id&direction=${this.state.sortOrder}&type_1=${this.state.type}`)
 
         this.setState ({
         pokedex: response.body.results,
@@ -38,7 +39,7 @@ export default class SearchPage extends Component {
     }
 
     handleReset = async (e) => {
-         this.setState ({ 
+         await this.setState ({ 
             query: '',
             sortOrder: 'asc',
             type: '' })
@@ -46,22 +47,37 @@ export default class SearchPage extends Component {
     }
 
     handleSortOrder = async (e) => {
-        this.setState ({ sortOrder: e.target.value})
+        await this.setState ({ sortOrder: e.target.value})
         await this.Pokefetch()
     }
 
     handleType = async (e) => {
-        this.setState ({ type: e.target.value})
+        await this.setState ({ type: e.target.value})
         await this.Pokefetch()
     }
-    
+
+    handleNextClick = async (e) => {
+        await this.setState ({ currentPage: this.state.currentPage + 1 })
+        await this.Pokefetch()
+    }
+
+    handlePrevClick = async (e) => {
+        await this.setState ({ currentPage: this.state.currentPage - 1 })
+        await this.Pokefetch()
+    }
+
     render() { 
         console.log(this.state)    
         return (
             <div className = "searchPage"> 
                 <div className="header">
                     <h1>Taylor's Big Ol' Dang Pokemon Emporium Yee Haw!</h1>
-                                  
+
+                    {this.state.currentPage !== 1 && <button onClick = {this.handlePrevClick}>Previous Page</button>}
+
+                    <span>Current Page: {this.state.currentPage} of blank pages</span>
+
+                    {this.state.pokedex.length < 20 || <button onClick = {this.handleNextClick}>Next Page</button>} 
 
                     <section className = "searchInput">
                     Search for your favorites or browse by type!  
